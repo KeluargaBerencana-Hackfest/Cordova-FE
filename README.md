@@ -55,4 +55,3 @@ https://documenter.getpostman.com/view/25537573/2s9YsMBXUD </br></br>
 <img width="360" src="https://arcudskzafkijqukfool.supabase.co/storage/v1/object/public/cordova-hackfest-2023/documentation-front-end-1.jpg">
 <img width="360" src="https://arcudskzafkijqukfool.supabase.co/storage/v1/object/public/cordova-hackfest-2023/documentation-front-end-2.jpg">
 <img width="360" src="https://arcudskzafkijqukfool.supabase.co/storage/v1/object/public/cordova-hackfest-2023/documentation-front-end-3.jpg">
-<img width="1100" alt="Banner Traveleen" src="https://arcudskzafkijqukfool.supabase.co/storage/v1/object/public/cordova-hackfest-2023/documentation-back-end.jpg">
