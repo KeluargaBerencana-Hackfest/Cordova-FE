@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "444182421044",
+    "project_id": "hackfest-2023-409516",
+    "storage_bucket": "hackfest-2023-409516.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:444182421044:android:c681667c6c456dd855b461",
+        "android_client_info": {
+          "package_name": "com.example.cordova"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "444182421044-ltm6v9j5ljjcjs5iuk655a8ueja2gkor.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHxhc5Ls4VriK8UCFeSa6dmBn5T-Ys-Ms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "444182421044-jo5fo3mid9bnl2leje1rlcn60lkg87ds.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

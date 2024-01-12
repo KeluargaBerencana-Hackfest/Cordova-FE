@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>444182421044-50b7pepiv8p4tjl1q680bpj8t291lk9c.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.444182421044-50b7pepiv8p4tjl1q680bpj8t291lk9c</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC2nSANSuHTAMLxaEdXYXqzGVvTK4iQ-yQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>444182421044</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.cordova.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>hackfest-2023-409516</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hackfest-2023-409516.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:444182421044:ios:d45cb3d0af8d213e55b461</string>
+</dict>
+</plist>
