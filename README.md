@@ -7,8 +7,9 @@
 ## Idea
 *A mobile-based application to record and monitor users' cholesterol level to prevent heart disease. This application is designed based on SDGs number 3, Good Health & Well Being. Completed with features such as recording cholesterol levels, graphs of increasing & decreasing cholesterol, percentage chance of developing heart disease, recommendations for the nearest health center, and suggestions for activities carried out according to users' cholesterol levels and percentage of developing heart disease.*
 
-## Cordova-BE
-*Cordova-BE is a repository that stores the source code for the server of the Cordova application. The backend or server for Cordova is built using the Golang programming language with the Gin framework and utilizes the Postgresql database. Additionally, the Cordova server is integrated with Firebase for authentication and data storage, while the deployment process is handled using the Google Cloud Platform. The creation of this server involves various considerations to ensure the development of an optimal server.*
+## Cordova-FE (Front End)
+*Cordova-FE is the front-end repository that contains the source code for the Cordova application's user interface. This Flutter-based front end seamlessly interacts with the Cordova server (Cordova-BE) to provide a user-friendly experience. The Flutter framework, along with Dart programming language, powers the Cordova-FE. This repository focuses on creating an intuitive and visually appealing interface to support users in managing their health effectively. Additionally, the Bloc pattern is implemented to manage the state in a predictable way.*
+
 
 #  💻  Features
 - Authentication
