@@ -190,7 +190,11 @@ class RegisterContent extends StatelessWidget {
                 SizedBox(
                   height: 24.h,
                 ),
-                LargeButton(text: 'Register', onClicked: () {}),
+                LargeButton(
+                    text: 'Register',
+                    onClicked: () {
+                      context.goNamed(RouteName.formBoardingPage);
+                    }),
                 SizedBox(
                   height: 8.h,
                 ),
