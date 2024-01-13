@@ -5,4 +5,6 @@ class RoutePath {
   static const loginPage = "/login";
   static const registerPage = "/register";
   static const homePage = "/home";
+  static const formBoardingPage = "/form-boarding";
+  static const formPage = "/form";
 }

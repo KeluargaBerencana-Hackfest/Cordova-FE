@@ -7,6 +7,9 @@ import 'package:cordova/app/routes/route_name.dart';
 import 'package:cordova/app/routes/route_path.dart';
 import 'package:go_router/go_router.dart';
 
+import '../pages/onboarding_form/form_page.dart';
+import '../pages/onboarding_form/form_boarding_page.dart';
+
 final router = GoRouter(routes: [
   GoRoute(
     path: RoutePath.onboardingPage,
@@ -78,5 +81,15 @@ final router = GoRouter(routes: [
         },
       );
     },
+  ),
+  GoRoute(
+    path: RoutePath.formBoardingPage,
+    name: RouteName.formBoardingPage,
+    builder: (context, state) => const FormBoardingPage(),
+  ),
+  GoRoute(
+    path: RoutePath.formPage,
+    name: RouteName.formPage,
+    builder: (context, state) => const FormPage(),
   ),
 ]);
