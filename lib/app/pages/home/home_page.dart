@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           Center(
-            child: Text('user sign in as ${user!.email!}'),
+            child: Text('user sign in as ${user?.email ?? "Unknown"}'),
           ),
           const SizedBox(
             height: 20,
