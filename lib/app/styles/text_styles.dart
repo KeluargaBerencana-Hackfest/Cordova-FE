@@ -10,6 +10,10 @@ class TextStyles {
       fontSize: 20.sp, fontWeight: FontWeight.w500, color: Colors.black);
   static TextStyle b2RegularBlack = GoogleFonts.poppins(
       fontSize: 14.sp, fontWeight: FontWeight.w400, color: Colors.black);
+  static TextStyle b1RegularBlack = GoogleFonts.poppins(
+      fontSize: 16.sp, fontWeight: FontWeight.w400, color: Colors.black);
+  static TextStyle b1SemiBoldBlack = GoogleFonts.poppins(
+      fontSize: 16.sp, fontWeight: FontWeight.w600, color: Colors.black);
   static TextStyle b2MediumBlack = GoogleFonts.poppins(
       fontSize: 14.sp, fontWeight: FontWeight.w500, color: Colors.black);
   static TextStyle b1MediumWhite = GoogleFonts.poppins(
@@ -24,6 +28,10 @@ class TextStyles {
       fontSize: 14.sp,
       fontWeight: FontWeight.w400,
       color: const Color(0xFFD0D5DD));
+  static TextStyle b2RegularTextfieldSecondary = GoogleFonts.poppins(
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w400,
+      color: ColorStyles.textSecondary);
   static TextStyle b2RegularTextfieldFilled = GoogleFonts.poppins(
       fontSize: 14.sp,
       fontWeight: FontWeight.w400,
@@ -39,4 +47,10 @@ class TextStyles {
       fontSize: 10.sp, fontWeight: FontWeight.w500, color: Colors.black);
   static TextStyle c1RegularGrey500 = GoogleFonts.poppins(
       fontSize: 12.sp, fontWeight: FontWeight.w400, color: ColorStyles.grey500);
+  static TextStyle c1Medium = GoogleFonts.poppins(
+      fontSize: 12.sp,
+      fontWeight: FontWeight.w500,
+      color: const Color(0xFF101828));
+  static TextStyle h5SemiBoldBlack = GoogleFonts.poppins(
+      fontSize: 20.sp, fontWeight: FontWeight.w600, color: Colors.black);
 }

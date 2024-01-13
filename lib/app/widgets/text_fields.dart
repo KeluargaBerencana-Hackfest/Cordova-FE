@@ -84,8 +84,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
             },
             child: Image.asset(
               isObscure ? widget.closedEyeIcon : widget.openedEyeIcon,
-              height: 20,
-              width: 20,
+              height: 20.h,
+              width: 20.w,
             ),
           )
         : (widget.suffixIcon != null
@@ -93,11 +93,19 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 onTap: () {},
                 child: Image.asset(
                   widget.suffixIcon!,
-                  height: 20,
-                  width: 20,
+                  height: 20.h,
+                  width: 20.w,
                 ),
               )
             : null);
+
+    Widget? suffixTextWidget = widget.suffixText != null
+        ? Text(
+            widget.suffixText!,
+            style: TextStyles.b2RegularTextfieldDefault,
+          )
+        : null;
+
     switch (widget.type) {
       case CustomTextFieldType.inputPassword:
         return InputDecoration(
@@ -171,8 +179,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
         );
       case CustomTextFieldType.inputAndSuffix:
         return InputDecoration(
-          suffixText: widget.suffixText,
-          suffixStyle: TextStyles.b2RegularTextfieldDefault,
+          suffix: suffixTextWidget,
+          suffixStyle: TextStyles.b2RegularTextfieldSecondary,
           hintText: widget.hintText,
           hintStyle: TextStyles.b2RegularTextfieldDefault,
           border: border,
@@ -182,8 +190,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
         );
       case CustomTextFieldType.inputWithSuffixAndHint:
         return InputDecoration(
-          suffixText: widget.suffixText,
-          suffixStyle: TextStyles.b2RegularTextfieldDefault,
+          suffix: suffixTextWidget,
+          suffixStyle: TextStyles.b2RegularTextfieldSecondary,
           hintText: widget.hintText,
           hintStyle: TextStyles.b2RegularTextfieldDefault,
           border: border,
