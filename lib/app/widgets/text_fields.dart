@@ -84,8 +84,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
             },
             child: Image.asset(
               isObscure ? widget.closedEyeIcon : widget.openedEyeIcon,
-              height: 20.h,
-              width: 20.w,
+              height: 16.h,
+              width: 16.w,
             ),
           )
         : (widget.suffixIcon != null
@@ -93,8 +93,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 onTap: () {},
                 child: Image.asset(
                   widget.suffixIcon!,
-                  height: 20.h,
-                  width: 20.w,
+                  height: 16.h,
+                  width: 16.w,
                 ),
               )
             : null);
