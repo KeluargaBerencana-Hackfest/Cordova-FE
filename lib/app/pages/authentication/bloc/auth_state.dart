@@ -1,6 +1,23 @@
 part of 'auth_bloc.dart';
 
-@immutable
-sealed class AuthState {}
+abstract class AuthState extends Equatable {
+  @override
+  List<Object> get props => [];
+}
 
-final class AuthInitial extends AuthState {}
+class AuthInitial extends AuthState {}
+
+class AuthLoading extends AuthState {}
+
+class AuthSignedIn extends AuthState {}
+
+class AuthSignedOut extends AuthState {}
+
+class AuthError extends AuthState {
+  final String errorMessage;
+
+  AuthError(this.errorMessage);
+
+  @override
+  List<Object> get props => [errorMessage];
+}
