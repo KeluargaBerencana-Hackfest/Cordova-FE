@@ -132,7 +132,7 @@ class _FormPageState extends State<FormPage> {
                             SmallButton(
                               text: 'Submit',
                               onClicked: () {
-                                context.goNamed(RouteName.homePage);
+                                context.goNamed(RouteName.mainPage);
                               },
                             ),
                           ],

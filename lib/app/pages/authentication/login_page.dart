@@ -1,17 +1,15 @@
 import 'package:cordova/app/styles/colors.dart';
 import 'package:cordova/app/styles/text_styles.dart';
 import 'package:cordova/app/widgets/large_button.dart';
-import 'package:cordova/app/widgets/loading.dart';
 import 'package:cordova/app/widgets/snackbar.dart';
 import 'package:cordova/app/widgets/text_fields.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cordova/data/repositories/auth_repository/firebase_auth_repo.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-
 import '../../routes/route_name.dart';
+import 'bloc/auth_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -22,37 +20,6 @@ class LoginPage extends StatefulWidget {
 
 TextEditingController emailController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
-
-void login(BuildContext context) async {
-  try {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return const Loading();
-      },
-    );
-
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text,
-      password: passwordController.text,
-    );
-    // User? user = FirebaseAuth.instance.currentUser;
-    // if (user != null) {
-    //   String? accessToken = await user.getIdToken();
-    //   print('Access Token: $accessToken');
-    // }
-
-    Navigator.pop(context);
-
-    context.goNamed(RouteName.homePage);
-  } on FirebaseAuthException catch (e) {
-    // Dismiss the CircularProgressIndicator dialog in case of an exception
-    Navigator.pop(context);
-    // Display Snackbar with the error message
-    displaySnackbar(context, e.code);
-  }
-}
 
 void displaySnackbar(BuildContext context, String message) {
   ScaffoldMessenger.of(context).showSnackBar(
@@ -66,6 +33,28 @@ void displaySnackbar(BuildContext context, String message) {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  late AuthBloc _authBloc;
+
+  @override
+  void initState() {
+    super.initState();
+    _authBloc = AuthBloc(FirebaseAuthRepository());
+
+    _authBloc.stream.listen((state) {
+      if (state is AuthError) {
+        displaySnackbar(context, state.errorMessage);
+      } else if (state is AuthSignedIn) {
+        context.goNamed(RouteName.mainPage);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _authBloc.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
           SizedBox(
             height: 42.h,
           ),
-          const LoginContent()
+          LoginContent(authBloc: _authBloc),
         ],
       ),
     );
@@ -98,9 +87,12 @@ class _LoginPageState extends State<LoginPage> {
 }
 
 class LoginContent extends StatefulWidget {
+  final AuthBloc authBloc;
+
   const LoginContent({
-    super.key,
-  });
+    Key? key,
+    required this.authBloc,
+  }) : super(key: key);
 
   @override
   State<LoginContent> createState() => _LoginContentState();
@@ -115,17 +107,20 @@ class _LoginContentState extends State<LoginContent> {
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-            color: ColorStyles.grey50,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.15),
-                spreadRadius: 2,
-                blurRadius: 6,
-                offset: const Offset(0, 2),
-              ),
-            ],
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(40), topRight: Radius.circular(40))),
+          color: ColorStyles.grey50,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.15),
+              spreadRadius: 2,
+              blurRadius: 6,
+              offset: const Offset(0, 2),
+            ),
+          ],
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(40),
+            topRight: Radius.circular(40),
+          ),
+        ),
         child: Padding(
           padding:
               EdgeInsets.only(top: 48.h, right: 16.w, left: 16.w, bottom: 20.h),
@@ -136,17 +131,13 @@ class _LoginContentState extends State<LoginContent> {
                   "Login",
                   style: TextStyles.h3SemiBoldBlack,
                 ),
-                SizedBox(
-                  height: 16.h,
-                ),
+                SizedBox(height: 16.h),
                 Text(
-                  "Log in for a personalized resources and tools that will guide you towards a heart-healthy lifestyle. ",
+                  "Log in for personalized resources and tools that will guide you towards a heart-healthy lifestyle.",
                   style: TextStyles.b2MediumBlack,
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
-                  height: 28.h,
-                ),
+                SizedBox(height: 28.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -156,16 +147,13 @@ class _LoginContentState extends State<LoginContent> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 4.h,
-                ),
+                SizedBox(height: 4.h),
                 CustomTextField(
-                    controller: emailController,
-                    type: CustomTextFieldType.input,
-                    hintText: 'sando1234@gmail.com'),
-                SizedBox(
-                  height: 8.h,
+                  controller: emailController,
+                  type: CustomTextFieldType.input,
+                  hintText: 'sando1234@gmail.com',
                 ),
+                SizedBox(height: 8.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -175,17 +163,14 @@ class _LoginContentState extends State<LoginContent> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 4.h,
-                ),
+                SizedBox(height: 4.h),
                 CustomTextField(
-                    controller: passwordController,
-                    type: CustomTextFieldType.inputPasswordAndHint,
-                    obscure: true,
-                    hintText: 'sando321'),
-                SizedBox(
-                  height: 4.h,
+                  controller: passwordController,
+                  type: CustomTextFieldType.inputPasswordAndHint,
+                  obscure: true,
+                  hintText: 'sando321',
                 ),
+                SizedBox(height: 4.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -195,53 +180,49 @@ class _LoginContentState extends State<LoginContent> {
                           isRemember = !isRemember;
                         });
                       },
-                      child: Image.asset(isRemember
-                          ? 'assets/icons/checkbox-fill.png'
-                          : 'assets/icons/checkbox-blank-line.png'),
+                      child: Image.asset(
+                        isRemember
+                            ? 'assets/icons/checkbox-fill.png'
+                            : 'assets/icons/checkbox-blank-line.png',
+                      ),
                     ),
-                    SizedBox(
-                      width: 4.w,
-                    ),
+                    SizedBox(width: 4.w),
                     Text(
                       'Remember me',
                       style: TextStyles.c1RegularGrey500,
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 42.h,
-                ),
+                SizedBox(height: 42.h),
                 LargeButton(
-                    text: 'Login',
-                    onClicked: () {
-                      login(context);
-                    }),
-                SizedBox(
-                  height: 8.h,
+                  text: 'Login',
+                  onClicked: () {
+                    widget.authBloc.add(SignInEvent(
+                        email: emailController.text,
+                        password: passwordController.text));
+                  },
                 ),
+                SizedBox(height: 8.h),
                 Text(
                   'or',
                   style: TextStyles.c2MediumBlack,
                 ),
-                SizedBox(
-                  height: 8.h,
-                ),
-                const GoogleButton(),
-                SizedBox(
-                  height: 158.h,
-                ),
+                SizedBox(height: 8.h),
+                GoogleButton(authBloc: widget.authBloc),
+                SizedBox(height: 158.h),
                 RichText(
                   text: TextSpan(
                     text: "Don’t have an account? ",
                     style: TextStyles.b2RegularBlack,
                     children: [
                       TextSpan(
-                          text: "Register",
-                          style: TextStyles.b2MediumInfo600Underline,
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              context.goNamed(RouteName.registerPage);
-                            }),
+                        text: "Register",
+                        style: TextStyles.b2MediumInfo600Underline,
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            context.goNamed(RouteName.registerPage);
+                          },
+                      ),
                     ],
                   ),
                 ),
@@ -255,8 +236,11 @@ class _LoginContentState extends State<LoginContent> {
 }
 
 class GoogleButton extends StatelessWidget {
+  final AuthBloc authBloc;
+
   const GoogleButton({
     Key? key,
+    required this.authBloc,
   }) : super(key: key);
 
   @override
@@ -280,7 +264,7 @@ class GoogleButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        signInWithGoogle(context);
+        authBloc.add(SignInWithGoogleEvent());
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -290,9 +274,7 @@ class GoogleButton extends StatelessWidget {
             width: 18.w,
             height: 18.h,
           ),
-          SizedBox(
-            width: 10.w,
-          ),
+          SizedBox(width: 10.w),
           Text(
             'Login with Google',
             style: TextStyles.b1MediumPrimary,
@@ -300,29 +282,5 @@ class GoogleButton extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-Future<void> signInWithGoogle(BuildContext context) async {
-  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-  if (googleUser == null) {
-    displaySnackbar(context, 'Login with Google canceled.');
-    return;
-  }
-
-  try {
-    final GoogleSignInAuthentication googleAuth =
-        await googleUser.authentication;
-    final AuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-    await FirebaseAuth.instance.signInWithCredential(credential);
-    print('access token : ${credential.accessToken}');
-    print('token : ${credential.token}');
-    context.goNamed(RouteName.homePage);
-  } on FirebaseAuthException catch (e) {
-    displaySnackbar(context, e.code);
   }
 }

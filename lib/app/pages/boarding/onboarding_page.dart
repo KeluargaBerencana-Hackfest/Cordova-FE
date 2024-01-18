@@ -1,4 +1,4 @@
-import 'package:cordova/app/pages/home/home_page.dart';
+import 'package:cordova/app/pages/home/main_page.dart';
 import 'package:cordova/app/routes/route_name.dart';
 import 'package:cordova/app/styles/colors.dart';
 import 'package:cordova/app/styles/text_styles.dart';
@@ -58,7 +58,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return const HomePage();
+            return const MainPage();
           } else {
             return SafeArea(
               child: SizedBox(
