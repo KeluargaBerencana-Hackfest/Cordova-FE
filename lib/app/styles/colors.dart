@@ -42,7 +42,7 @@ class ColorStyles {
   static Color accent50 = const Color(0xFFEFEBF7);
   static Color accent100 = const Color(0xFFCEC3E8);
   static Color accent200 = const Color(0xFFAD9CD9);
-  static Color accent300 = const Color(0xFFF6F6F6);
+  static Color accent300 = const Color(0xFFAD9CD9);
   static Color accent400 = const Color(0xFF7B60C1);
   static Color accent500 = const Color(0xFF6B4CBA);
   static Color accent600 = const Color(0xFF5A38B2);

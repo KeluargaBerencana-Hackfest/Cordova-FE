@@ -16,6 +16,14 @@ class TextStyles {
       fontSize: 16.sp, fontWeight: FontWeight.w600, color: Colors.black);
   static TextStyle b2MediumBlack = GoogleFonts.poppins(
       fontSize: 14.sp, fontWeight: FontWeight.w500, color: Colors.black);
+  static TextStyle b2MediumWhite = GoogleFonts.poppins(
+      fontSize: 14.sp, fontWeight: FontWeight.w500, color: Colors.white);
+  static TextStyle b2MediumGrey50 = GoogleFonts.poppins(
+      fontSize: 14.sp, fontWeight: FontWeight.w500, color: ColorStyles.grey50);
+  static TextStyle b2MediumPrimary = GoogleFonts.poppins(
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w500,
+      color: ColorStyles.textPrimary);
   static TextStyle b1MediumWhite = GoogleFonts.poppins(
       fontSize: 16.sp, fontWeight: FontWeight.w500, color: Colors.white);
   static TextStyle b1MediumPrimary = GoogleFonts.poppins(
@@ -53,4 +61,35 @@ class TextStyles {
       color: const Color(0xFF101828));
   static TextStyle h5SemiBoldBlack = GoogleFonts.poppins(
       fontSize: 20.sp, fontWeight: FontWeight.w600, color: Colors.black);
+  static TextStyle h5SemiBoldWhite = GoogleFonts.poppins(
+      fontSize: 20.sp, fontWeight: FontWeight.w600, color: Colors.white);
+  static TextStyle h6SemiBoldBlack = GoogleFonts.poppins(
+      fontSize: 18.sp, fontWeight: FontWeight.w600, color: Colors.black);
+  static TextStyle c2RegularInfo600Underline = GoogleFonts.poppins(
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w400,
+    color: ColorStyles.info600,
+    decoration: TextDecoration.underline,
+    decorationColor: ColorStyles.info600,
+  );
+  static TextStyle b1MediumBlack = GoogleFonts.poppins(
+      fontSize: 16.sp, fontWeight: FontWeight.w500, color: Colors.black);
+  static TextStyle b1BoldBlack = GoogleFonts.poppins(
+      fontSize: 16.sp, fontWeight: FontWeight.w700, color: Colors.black);
+  static TextStyle c1RegularBlack = GoogleFonts.poppins(
+      fontSize: 12.sp, fontWeight: FontWeight.w400, color: Colors.black);
+  static TextStyle h1SemiBoldWhite = GoogleFonts.poppins(
+      fontSize: 48.sp, fontWeight: FontWeight.w600, color: Colors.white);
+  static TextStyle b2SemiBoldPrimary600 = GoogleFonts.poppins(
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w600,
+      color: ColorStyles.primary600);
+  static TextStyle b2SemiBoldWhite = GoogleFonts.poppins(
+      fontSize: 14.sp, fontWeight: FontWeight.w600, color: Colors.white);
+  static TextStyle c2MediumAccent600 = GoogleFonts.poppins(
+      fontSize: 10.sp,
+      fontWeight: FontWeight.w500,
+      color: ColorStyles.accent600);
+  static TextStyle h4SemiBoldBlack = GoogleFonts.poppins(
+      fontSize: 24.sp, fontWeight: FontWeight.w600, color: Colors.black);
 }
